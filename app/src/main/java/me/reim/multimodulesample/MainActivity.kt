@@ -1,9 +1,10 @@
 package me.reim.multimodulesample
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import me.reim.mylibrary.MyLibraryMainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         textMessage = findViewById(R.id.message)
+        textMessage.setOnClickListener {
+            val intent = MyLibraryMainActivity.createIntent(this@MainActivity)
+            this@MainActivity.startActivity(intent)
+        }
+
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 }
